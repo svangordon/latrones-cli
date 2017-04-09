@@ -3,6 +3,8 @@
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
 import { getAsyncInjectors } from './utils/asyncInjectors';
+import { routerActions } from 'react-router-redux'
+import { UserAuthWrapper } from 'redux-auth-wrapper'
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -11,6 +13,14 @@ const errorLoading = (err) => {
 const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
+
+
+const UserIsAuthenticated = UserAuthWrapper({
+  authSelector: state => null,
+  predicate: authData=>false,
+  redirectAction: routerActions.replace,
+  wrapperDisplayName: 'UserIsAuthenticated'
+});
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
@@ -27,7 +37,7 @@ export default function createRoutes(store) {
           import('containers/HomePage'),
         ]);
 
-        const renderRoute = loadModule(cb);
+        const renderRoute = loadModule(cb, UserIsAuthenticated);
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('home', reducer.default);

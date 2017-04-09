@@ -22,6 +22,15 @@ import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
+import { routerActions } from 'react-router-redux';
+import { UserAuthWrapper } from 'redux-auth-wrapper';
+
+// Redirects to /login by default
+const UserIsAuthenticated = UserAuthWrapper({
+  authSelector: state => state.user, // how to get the user state
+  redirectAction: routerActions.replace, // the redux action to dispatch for redirect
+  wrapperDisplayName: 'UserIsAuthenticated' // a nice name for this auth check
+})
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -118,4 +127,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 // Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default UserIsAuthenticated(connect(mapStateToProps, mapDispatchToProps)(HomePage));
