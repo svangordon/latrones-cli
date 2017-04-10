@@ -16,8 +16,8 @@ function LoginForm({handleSubmit}) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="nickname">User Name</label>
-        <Field name="nickname" component="input" type="text"/>
+        <label htmlFor="username">User Name</label>
+        <Field name="username" component="input" type="text"/>
       </div>
       <div>
         <label htmlFor="password">Password</label>

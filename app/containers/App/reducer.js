@@ -16,6 +16,9 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  USER_LOGIN_REQUESTED,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
 } from './constants';
 
 // The initial state of the App
@@ -26,9 +29,11 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  user: null,
 });
 
 function appReducer(state = initialState, action) {
+  console.log('app reducer fired');
   switch (action.type) {
     case LOAD_REPOS:
       return state
@@ -44,6 +49,19 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case USER_LOGIN_REQUESTED:
+      return state
+        .set('loading', true)
+        .set('error', false)
+        // .set('user', null) // not sure if we want to do this?
+    case USER_LOGIN_SUCCESS:
+      return state
+        .set('user', action.user)
+        .set('loading', false)
+    case USER_LOGIN_ERROR:
+      return state
+        .set('error', action.error)
+        .set('loading', false)
     default:
       return state;
   }

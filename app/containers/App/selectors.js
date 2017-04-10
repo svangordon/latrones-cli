@@ -42,9 +42,10 @@ const makeSelectLocationState = () => {
   };
 };
 
-const makeSelectUser = (state) => {
-  state.get('user');
-};
+const makeSelectUser = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.get('user')
+);
 
 export {
   selectGlobal,

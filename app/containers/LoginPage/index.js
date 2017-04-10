@@ -9,6 +9,11 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import makeSelectLoginPage from './selectors';
+import {
+  makeSelectUser,
+  makeSelectLoading,
+  makeSelectError
+} from 'containers/App/selectors';
 // import { selectLoginForm } from './selectors';
 import messages from './messages';
 import LoginForm from 'components/LoginForm';
@@ -26,8 +31,9 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
     return (
       <div>
         <LoginForm
-          handleSubmit={(e) => {e.preventDefault(); this.props.login()}}
+          handleSubmit={(e) => {e.preventDefault(); this.props.login(new FormData(e.target))}}
         />
+        {this.props.error ? <p>{this.props.error}</p> : null}
       </div>
     );
   }
@@ -40,13 +46,16 @@ LoginPage.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   LoginPage: makeSelectLoginPage(),
+  user: makeSelectUser(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
   // LoginForm: makeSelectLoginPage
 });
 
 function mapDispatchToProps(dispatch, props) {
   return {
     dispatch: dispatch,
-    login: () => {dispatch(login(props.values))}
+    login: (form) => {dispatch(login(form))}
   };
 }
 

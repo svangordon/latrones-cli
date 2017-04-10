@@ -19,6 +19,9 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  USER_LOGIN_REQUESTED,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
 } from './constants';
 
 /**
@@ -30,6 +33,12 @@ export function loadRepos() {
   return {
     type: LOAD_REPOS,
   };
+}
+
+export function loginUserRequested() {
+  return {
+    type: USER_LOGIN_REQUESTED,
+  }
 }
 
 /**
@@ -48,6 +57,13 @@ export function reposLoaded(repos, username) {
   };
 }
 
+export function userLoginSuccess(user) {
+  return {
+    type: USER_LOGIN_SUCCESS,
+    user
+  }
+}
+
 /**
  * Dispatched when loading the repositories fails
  *
@@ -60,4 +76,11 @@ export function repoLoadingError(error) {
     type: LOAD_REPOS_ERROR,
     error,
   };
+}
+
+export function userLoginError(error) {
+  return {
+    type:  USER_LOGIN_ERROR,
+    error,
+  }
 }
