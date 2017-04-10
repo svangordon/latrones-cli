@@ -42,6 +42,10 @@ const makeSelectLocationState = () => {
   };
 };
 
+const makeSelectUser = (state) => {
+  state.get('user');
+};
+
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -49,4 +53,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocationState,
+  makeSelectUser
 };

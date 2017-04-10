@@ -9,7 +9,23 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import userReducer from 'reducers/userReducer.js';
+import { reducer as formReducer } from 'redux-form';
+
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from './constants.js';
+
+/* User Reducer
+ * Responsible for tracking user login
+ */
+ const userReducer = (state = {}, { type, payload }) => {
+   if (type === USER_LOGGED_IN) {
+     console.log('hitting logged in route', 'state', state, 'payload', payload);
+     return payload
+   }
+   if (type === USER_LOGGED_OUT) {
+     return {}
+   }
+   return state
+ }
 
 /*
  * routeReducer
@@ -47,6 +63,7 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     global: globalReducer,
     language: languageProviderReducer,
+    form: formReducer,
     user: userReducer,
     ...asyncReducers,
   });

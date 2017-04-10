@@ -15,12 +15,12 @@ const loadModule = (cb) => (componentModule) => {
 };
 
 
-const UserIsAuthenticated = UserAuthWrapper({
-  authSelector: state => null,
-  predicate: authData=>false,
-  redirectAction: routerActions.replace,
-  wrapperDisplayName: 'UserIsAuthenticated'
-});
+// const UserIsAuthenticated = UserAuthWrapper({
+//   authSelector: state => state.user,
+//   predicate: authData=>false,
+//   redirectAction: routerActions.replace,
+//   wrapperDisplayName: 'UserIsAuthenticated'
+// });
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
@@ -37,7 +37,7 @@ export default function createRoutes(store) {
           import('containers/HomePage'),
         ]);
 
-        const renderRoute = loadModule(cb, UserIsAuthenticated);
+        const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
           injectReducer('home', reducer.default);
