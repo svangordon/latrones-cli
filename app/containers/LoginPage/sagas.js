@@ -1,5 +1,5 @@
 import { take, call, put, select, takeLatest } from 'redux-saga/effects';
-import request from 'utils/request';
+// import request from 'utils/request';
 import {
   USER_LOGIN_REQUESTED,
   USER_LOGIN_SUCCESS,

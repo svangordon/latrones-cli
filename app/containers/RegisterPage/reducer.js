@@ -9,7 +9,7 @@ import {
   DEFAULT_ACTION,
   REGISTER_USER_REQUESTED,
   REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAILURE,
+  REGISTER_USER_ERROR,
 } from './constants';
 
 const initialState = fromJS({});
