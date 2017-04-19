@@ -1,6 +1,6 @@
 /**
 *
-* LoginForm
+* RegisterForm
 *
 */
 
@@ -9,10 +9,9 @@ import React from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-
 import { Field, reduxForm } from 'redux-form/immutable';
 
-function LoginForm({handleSubmit}) {
+function RegisterForm({handleSubmit}) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -28,13 +27,13 @@ function LoginForm({handleSubmit}) {
   );
 }
 
-LoginForm.propTypes = {
-  handleSubmit: React.PropTypes.func
+RegisterForm.propTypes = {
+  handleSubmit: React.PropTypes.func,
 };
 
 // Decorate the form component
-LoginForm = reduxForm({
-  form: 'login' // a unique name for this form
-})(LoginForm);
+RegisterForm = reduxForm({
+  form: 'register' // a unique name for this form
+})(RegisterForm);
 
-export default LoginForm;
+export default RegisterForm;

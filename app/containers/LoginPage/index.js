@@ -34,6 +34,7 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
           handleSubmit={(e) => {e.preventDefault(); this.props.login(new FormData(e.target))}}
         />
         {this.props.error ? <p>{this.props.error}</p> : null}
+        <a>Login with Twitter</a>
       </div>
     );
   }

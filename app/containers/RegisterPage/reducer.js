@@ -1,20 +1,20 @@
 /*
  *
- * LoginPage reducer
+ * RegisterPage reducer
  *
  */
 
 import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
-  USER_LOGIN_REQUESTED,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAILURE,
+  REGISTER_USER_REQUESTED,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAILURE,
 } from './constants';
 
 const initialState = fromJS({});
 
-function loginPageReducer(state = initialState, action) {
+function registerPageReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -23,4 +23,4 @@ function loginPageReducer(state = initialState, action) {
   }
 }
 
-export default loginPageReducer;
+export default registerPageReducer;
