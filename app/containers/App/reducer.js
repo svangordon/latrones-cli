@@ -21,6 +21,12 @@ import {
   USER_LOGIN_ERROR,
 } from './constants';
 
+import {
+  REFRESH_TOKEN_REQUESTED,
+  REFRESH_TOKEN_SUCCESS,
+  REFRESH_TOKEN_ERROR,
+} from 'containers/LoginPage/constants';
+
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
@@ -48,6 +54,12 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case REFRESH_TOKEN_REQUESTED:
+      return state;
+    case REFRESH_TOKEN_SUCCESS:
+      return state;
+    case REFRESH_TOKEN_ERROR:
+      return state;
     case USER_LOGIN_REQUESTED:
       return state
         .set('loading', true)

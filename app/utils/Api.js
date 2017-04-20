@@ -20,6 +20,16 @@ const login = (form) => {
   return request(baseUrl + stemUrl, options);
 };
 
+const refreshToken = () => {
+  const stemUrl = `user/0`;
+  const options = Object.assign(
+    {},
+    defaultOptions,
+    {method: 'post'}
+  );
+  return request(baseUrl + stemUrl, options);
+}
+
 const register = (form) => {
   const stemUrl = `users`;
   const options = Object.assign(
@@ -35,5 +45,6 @@ const register = (form) => {
 
 module.exports = {
   login,
-  register
+  register,
+  refreshToken
 }

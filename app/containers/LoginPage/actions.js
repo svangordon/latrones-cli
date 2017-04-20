@@ -11,6 +11,7 @@ import {
 
 import {
   DEFAULT_ACTION,
+  REFRESH_TOKEN_REQUESTED
 } from './constants';
 
 export function defaultAction() {
@@ -23,6 +24,13 @@ export function login(form) {
   return {
     type: USER_LOGIN_REQUESTED,
     form
+  }
+}
+
+export function refreshToken() {
+  console.log('refreshToken action fired');
+  return {
+    type: REFRESH_TOKEN_REQUESTED
   }
 }
 

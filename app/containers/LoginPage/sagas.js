@@ -9,19 +9,33 @@ import {
   userLoginSuccess,
   userLoginError ,
 } from 'containers/App/actions';
+import {
+  REFRESH_TOKEN_REQUESTED
+} from './constants';
 import * as Api from 'utils/Api';
 
 // Individual exports for testing
 export function* loginUser(action) {
   try {
-    const requestURL = `http://jsonplaceholder.typicode.com/users`;
-    console.log('point1', action)
+    // const requestURL = `http://jsonplaceholder.typicode.com/users`;
+    // console.log('point1', action)
     const user = yield call(Api.login, action.form);
-    console.log('users', user);
+    // console.log('users', user);
     yield put({type: USER_LOGIN_SUCCESS, user: user});
   } catch (e) {
-    const message = "Could not log in."
-    yield put({type: USER_LOGIN_ERROR, error: message})
+    const message = "Could not log in.";
+    yield put({type: USER_LOGIN_ERROR, error: message});
+  }
+}
+
+export function* refreshToken(action) {
+  try {
+    console.log("refreshing token");
+    const user = yield call(Api.refreshToken);
+    yield put({type: USER_LOGIN_SUCCESS, user: user});
+  } catch (e) {
+    const message="";
+    yield put({type: USER_LOGIN_ERROR, error: message});
   }
 }
 
@@ -30,6 +44,7 @@ export function* loginUser(action) {
  */
  function* userLoginSaga() {
    yield takeLatest(USER_LOGIN_REQUESTED, loginUser);
+   yield takeLatest(REFRESH_TOKEN_REQUESTED, refreshToken);
  }
 
 // All sagas to be loaded

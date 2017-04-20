@@ -17,7 +17,7 @@ import {
 // import { selectLoginForm } from './selectors';
 import messages from './messages';
 import LoginForm from 'components/LoginForm';
-import { login } from './actions';
+import { login, refreshToken } from './actions';
 import {
   getFormValues,
   isDirty,
@@ -27,6 +27,12 @@ import {
 } from 'redux-form/immutable';
 
 export class LoginPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentWillMount() {
+    console.log("mounting");
+    this.props.refreshToken();
+  }
+
   render() {
     return (
       <div>
@@ -43,6 +49,7 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
 LoginPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  refreshToken: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -56,7 +63,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch, props) {
   return {
     dispatch: dispatch,
-    login: (form) => {dispatch(login(form))}
+    login: (form) => {dispatch(login(form))},
+    refreshToken: () => {dispatch(refreshToken())},
   };
 }
 
