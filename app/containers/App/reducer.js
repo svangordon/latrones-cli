@@ -33,7 +33,6 @@ const initialState = fromJS({
 });
 
 function appReducer(state = initialState, action) {
-  console.log('app reducer fired');
   switch (action.type) {
     case LOAD_REPOS:
       return state

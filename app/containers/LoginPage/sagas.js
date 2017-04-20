@@ -13,7 +13,6 @@ import * as Api from 'utils/Api';
 
 // Individual exports for testing
 export function* loginUser(action) {
-  console.log('default login saga fired', action);
   try {
     const requestURL = `http://jsonplaceholder.typicode.com/users`;
     console.log('point1', action)

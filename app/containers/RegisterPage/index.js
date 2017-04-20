@@ -11,12 +11,16 @@ import { createStructuredSelector } from 'reselect';
 import makeSelectRegisterPage from './selectors';
 import messages from './messages';
 import RegisterForm from 'components/RegisterForm';
+import { register } from './actions';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <FormattedMessage {...messages.header} />
+        <RegisterForm
+          handleSubmit={(e) => {e.preventDefault(); this.props.register(new FormData(e.target))}}
+        />
+        {this.props.error ? <p>{this.props.error}</p> : null}
       </div>
     );
   }
@@ -33,6 +37,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    register: (form) => {dispatch(register(form))}
   };
 }
 

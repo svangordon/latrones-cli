@@ -22,6 +22,10 @@ function RegisterForm({handleSubmit}) {
         <label htmlFor="password">Password</label>
         <Field name="password" component="input" type="password"/>
       </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <Field name="email" component="input" type="email"/>
+      </div>
       <button type="submit">Submit</button>
     </form>
   );
@@ -33,7 +37,12 @@ RegisterForm.propTypes = {
 
 // Decorate the form component
 RegisterForm = reduxForm({
-  form: 'register' // a unique name for this form
+  form: 'register', // a unique name for this form
+  initialValues: {
+    email: "email@example.com",
+    password: "password",
+    nickname: "doggy"
+  },
 })(RegisterForm);
 
 export default RegisterForm;

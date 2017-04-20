@@ -17,22 +17,22 @@ export function defaultAction() {
   };
 }
 
-export function login(form) {
+export function register(form) {
   return {
-    type: USER_LOGIN_REQUESTED,
+    type: REGISTER_USER_REQUESTED,
     form
   }
 }
 
-export function userLoginSuccess(user) {
+export function registerUserSuccess(user) {
   return {
-    type: USER_LOGIN_SUCCESS,
+    type: REGISTER_USER_SUCCESS,
     user
   }
 }
-export function userLoginError(error) {
+export function registerUserError(error) {
   return {
-    type:  USER_LOGIN_ERROR,
+    type:  REGISTER_USER_ERROR,
     error,
   }
 }

@@ -1,9 +1,10 @@
 import request from 'utils/request';
 
-const baseUrl = `http://localhost:5000/`
+const baseUrl = `http://localhost:5000/latr/api/v1.0/`
 
 const defaultOptions = {
-  mode: 'no-cors'
+  // mode: 'no-cors',
+  credentials: 'include'
 }
 
 const login = (form) => {
@@ -20,7 +21,7 @@ const login = (form) => {
 };
 
 const register = (form) => {
-  const stemUrl = `register`;
+  const stemUrl = `users`;
   const options = Object.assign(
     {},
     defaultOptions,

@@ -34,7 +34,11 @@ LoginForm.propTypes = {
 
 // Decorate the form component
 LoginForm = reduxForm({
-  form: 'login' // a unique name for this form
+  form: 'login', // a unique name for this form
+  initialValues: {
+    password: "password",
+    nickname: "doggy"
+  },
 })(LoginForm);
 
 export default LoginForm;
