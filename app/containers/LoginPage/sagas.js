@@ -32,6 +32,7 @@ export function* refreshToken(action) {
   try {
     console.log("refreshing token");
     const user = yield call(Api.refreshToken);
+    console.log("got back", user);
     yield put({type: USER_LOGIN_SUCCESS, user: user});
   } catch (e) {
     const message="";

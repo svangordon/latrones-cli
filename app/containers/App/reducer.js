@@ -55,7 +55,9 @@ function appReducer(state = initialState, action) {
         .set('error', action.error)
         .set('loading', false);
     case REFRESH_TOKEN_REQUESTED:
-      return state;
+      return state
+        .set('loading', true)
+        .set('error', false);
     case REFRESH_TOKEN_SUCCESS:
       return state;
     case REFRESH_TOKEN_ERROR:
@@ -66,7 +68,7 @@ function appReducer(state = initialState, action) {
         .set('error', false)
         // .set('user', null) // not sure if we want to do this?
     case USER_LOGIN_SUCCESS:
-      action.user.loggedIn = true
+      console.log("user loging success fired");
       return state
         .set('user', action.user)
         .set('loading', false)

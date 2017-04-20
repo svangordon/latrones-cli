@@ -25,6 +25,9 @@ import {
   isValid,
   isInvalid
 } from 'redux-form/immutable';
+import {
+  UserIsNotAuthenticated
+} from 'utils/wrappers';
 
 export class LoginPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -76,10 +79,10 @@ const connectFn = state => ({
   invalid: isInvalid('login')(state)
 })
 
-export default connect(state => ({
+export default UserIsNotAuthenticated(connect(state => ({
   values: getFormValues('login')(state),
   dirty: isDirty('login')(state),
   pristine: isPristine('login')(state),
   valid: isValid('login')(state),
   invalid: isInvalid('login')(state)
-}))(connect(mapStateToProps, mapDispatchToProps)(LoginPage));
+}))(connect(mapStateToProps, mapDispatchToProps)(LoginPage)));
