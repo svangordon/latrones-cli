@@ -4,7 +4,7 @@
 // about the code splitting business
 import { getAsyncInjectors } from './utils/asyncInjectors';
 import { routerActions } from 'react-router-redux'
-import { UserAuthWrapper } from 'redux-auth-wrapper'
+// import { UserAuthWrapper } from 'redux-auth-wrapper'
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -14,13 +14,6 @@ const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
 
-
-// const UserIsAuthenticated = UserAuthWrapper({
-//   authSelector: state => state.user,
-//   predicate: authData=>false,
-//   redirectAction: routerActions.replace,
-//   wrapperDisplayName: 'UserIsAuthenticated'
-// });
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory

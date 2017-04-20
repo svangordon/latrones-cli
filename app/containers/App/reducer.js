@@ -54,6 +54,7 @@ function appReducer(state = initialState, action) {
         .set('error', false)
         // .set('user', null) // not sure if we want to do this?
     case USER_LOGIN_SUCCESS:
+      action.user.loggedIn = true
       return state
         .set('user', action.user)
         .set('loading', false)
