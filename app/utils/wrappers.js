@@ -27,15 +27,13 @@ export const UserIsNotAuthenticated = UserAuthWrapper({
   predicate: global => {
       // Return true if user is not authenticated
       console.log("IsNotAuth predicate sees user as", global.get("user"), " loading ==", global.get("loading"));
-      if ((global.get("user") === null || global.get("user") === {})
-        && global.get("loading") === false) {
+      if ((global.get("user") === null || global.get("user") === {})) {
           console.log("IsNotAuth predicate true, not redirecting");
         } else {
           console.log("IsNotAuth predicate false, redirecting");
           console.log("user ==", global.get("user"), "loading ==", global.get("loading"));
         }
-      return (global.get("user") === null || global.get("user") === {})
-        && global.get("loading") === false;
+      return (global.get("user") === null || global.get("user") === {});
   },
   // TODO: Change fallthrough redirect
   failureRedirectPath: (state, ownProps) => {return ownProps.location.query.redirect || '/foo'},
