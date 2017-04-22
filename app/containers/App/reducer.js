@@ -59,9 +59,13 @@ function appReducer(state = initialState, action) {
         .set('loading', true)
         .set('error', false);
     case REFRESH_TOKEN_SUCCESS:
-      return state;
+      return state
+        .set('loading', false)
+        .set('user', action.user);
     case REFRESH_TOKEN_ERROR:
-      return state;
+      return state
+        .set('loading', false)
+        .set('error', action.error);
     case USER_LOGIN_REQUESTED:
       return state
         .set('loading', true)

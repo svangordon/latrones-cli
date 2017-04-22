@@ -10,7 +10,9 @@ import {
   userLoginError ,
 } from 'containers/App/actions';
 import {
-  REFRESH_TOKEN_REQUESTED
+  REFRESH_TOKEN_REQUESTED,
+  REFRESH_TOKEN_SUCCESS,
+  REFRESH_TOKEN_ERROR,
 } from './constants';
 import * as Api from 'utils/Api';
 
@@ -33,10 +35,11 @@ export function* refreshToken(action) {
     console.log("refreshing token");
     const user = yield call(Api.refreshToken);
     console.log("got back", user);
-    yield put({type: USER_LOGIN_SUCCESS, user: user});
+    yield put({type: REFRESH_TOKEN_SUCCESS, user: user});
   } catch (e) {
+    console.log("refreshToken catch block");
     const message="";
-    yield put({type: USER_LOGIN_ERROR, error: message});
+    yield put({type: REFRESH_TOKEN_ERROR, error: message});
   }
 }
 

@@ -32,7 +32,7 @@ import {
 export class LoginPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentWillMount() {
-    console.log("mounting");
+    console.log("mounting LoginPage");
     this.props.refreshToken();
   }
 

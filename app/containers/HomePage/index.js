@@ -10,7 +10,12 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import {
+  makeSelectRepos,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectUser,
+} from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
@@ -25,13 +30,6 @@ import { makeSelectUsername } from './selectors';
 import { routerActions } from 'react-router-redux';
 // import { UserAuthWrapper } from 'redux-auth-wrapper';
 import { UserIsAuthenticated } from 'utils/wrappers.js'
-
-// // Redirects to /login by default
-// const UserIsAuthenticated = UserAuthWrapper({
-//   authSelector: state => state.user, // how to get the user state
-//   redirectAction: routerActions.replace, // the redux action to dispatch for redirect
-//   wrapperDisplayName: 'UserIsAuthenticated' // a nice name for this auth check
-// })
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
@@ -60,6 +58,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <div>
+        <p> OH WHY HELLO THERE {this.props.user.nickname}</p>
           <CenteredSection>
             <H2>
               <FormattedMessage {...messages.startProjectHeader} />
@@ -106,8 +105,9 @@ HomePage.propTypes = {
     React.PropTypes.bool,
   ]),
   onSubmitForm: React.PropTypes.func,
-  username: React.PropTypes.string,
   onChangeUsername: React.PropTypes.func,
+  user: React.PropTypes.object,
+  username: React.PropTypes.string,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -125,6 +125,7 @@ const mapStateToProps = createStructuredSelector({
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
+  user: makeSelectUser(),
 });
 
 // Wrap the component to inject dispatch and state into it
