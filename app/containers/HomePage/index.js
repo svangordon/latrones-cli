@@ -16,6 +16,7 @@ import {
   makeSelectError,
   makeSelectUser,
 } from 'containers/App/selectors';
+import Dashboard from 'components/Dashboard';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import AtPrefix from './AtPrefix';
@@ -58,7 +59,11 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
           ]}
         />
         <div>
-        <p> OH WHY HELLO THERE {this.props.user.nickname}</p>
+          <p> OH WHY HELLO THERE {this.props.user.nickname}</p>
+          <Dashboard
+            nickname={this.props.user.nickname}
+            email={this.props.user.email}
+          />
           <CenteredSection>
             <H2>
               <FormattedMessage {...messages.startProjectHeader} />
