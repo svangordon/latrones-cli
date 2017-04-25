@@ -28,11 +28,11 @@ const AppWrapper = styled.div`
 `;
 
 export function App(props) {
-  // console.log('App props ==', props.location);
+  console.log('App props ==', props.location.pathname);
   return (
     <AppWrapper>
       <ScreenDimensionSpy />
-      <Navbar location={props.location}/>
+      <Navbar location={props.location.pathname}/>
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"

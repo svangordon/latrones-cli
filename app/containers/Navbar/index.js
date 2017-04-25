@@ -11,7 +11,10 @@ import { createStructuredSelector } from 'reselect';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
-import makeSelectNavbar from './selectors'; // Should I be bundling these all here...?
+import SideNav from 'components/SideNav';
+import TopNav from 'components/TopNav';
+
+import makeSelectNavbar from './selectors';
 import { makeSelectWidth, makeSelectUser, makeSelectRoute } from './selectors';
 import messages from './messages';
 
@@ -32,9 +35,9 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
     this.setState({collapseDrawer: !this.state.collapseDrawer});
   }
 
-  _renderSideNav() {
+  _renderSideNav(options) {
     return (
-      <Drawer open={true}>
+      <Drawer open={true} width={options.width}>
         { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}
       </Drawer>
     );
@@ -51,9 +54,16 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
       return null;
     }
     if (this.props.width >= 960) {
-      return this._renderSideNav();
+      const expanded = this.props.width >= 1280 && !this.state.collapseDrawer;
+      return <SideNav expanded={expanded} />
+      // const options = {
+      //   width: this.props.width >= 1280 && !this.state.collapseDrawer ?
+      //     this.expandedSideNavWidth : this.collapsedSideNavWidth
+      // };
+      // return this._renderSideNav(options);
     } else {
-      return this._renderTopNav();
+      return <TopNav />
+      // return this._renderTopNav();
     }
   }
 }
