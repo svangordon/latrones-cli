@@ -30,6 +30,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
   _renderSideNav() {
     return (
       <Drawer open={true}>
+        { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}
       </Drawer>
     );
   }

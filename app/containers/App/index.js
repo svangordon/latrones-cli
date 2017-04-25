@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import Navbar from 'containers/Navbar';
 import ScreenDimensionSpy from 'containers/ScreenDimensionSpy';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -30,6 +31,7 @@ export function App(props) {
   return (
     <AppWrapper>
       <ScreenDimensionSpy />
+      <Navbar />
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
@@ -37,7 +39,6 @@ export function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
-      <Header height={props.height} width={props.width}/>
       {React.Children.toArray(props.children)}
       <Footer />
     </AppWrapper>
