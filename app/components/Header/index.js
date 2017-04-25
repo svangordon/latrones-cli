@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
 
 import A from './A';
 import Img from './Img';
@@ -10,25 +11,48 @@ import Banner from './banner.jpg';
 import messages from './messages';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapseDrawer: false
+    };
+    this._handleCollapseDrawer = this._handleCollapseDrawer.bind(this);
+
+    this.expandedSideNavWidth = 140;
+    this.collapsedSideNavWidth = 50;
+  }
+
+  _handleCollapseDrawer() {
+    this.setState({collapseDrawer: !this.state.collapseDrawer});
+  }
+
+  _renderSideNav() {
+    return (
+      <Drawer open={true}>
+      </Drawer>
+    );
+  }
+
+  _renderTopNav() {
+    return (
+      <AppBar />
+    );
+  }
+
   render() {
     console.log("header props", this.props);
-    return (
-      <div>
-        <Drawer open={true}>
-        </Drawer>
-        <A href="https://twitter.com/mxstbr">
-          <Img src={Banner} alt="react-boilerplate - Logo" />
-        </A>
-        <NavBar>
-          <HeaderLink to="/">
-            <FormattedMessage {...messages.home} />
-          </HeaderLink>
-          <HeaderLink to="/features">
-            <FormattedMessage {...messages.features} />
-          </HeaderLink>
-        </NavBar>
-      </div>
-    );
+    if (this.props.width >= 960) {
+      return this._renderSideNav();
+    } else {
+      return this._renderTopNav();
+    }
+    // return (
+    //   <div>
+    //     <Drawer open={true}>
+    //     </Drawer>
+    //   </div>
+    // );
   }
 }
 /* Use for reference and then delete 4/25
