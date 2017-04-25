@@ -10,6 +10,8 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import globalReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import { reducer as formReducer } from 'redux-form';
+import screenReducer from 'containers/ScreenDimensionSpy/reducer';
+// import { SET_SCREEN_DIMENSIONS } from 'containers/ScreenDimensionSpy/constants';
 
 // import { USER_LOGGED_IN, USER_LOGGED_OUT } from './constants.js';
 
@@ -64,6 +66,7 @@ export default function createReducer(asyncReducers) {
     global: globalReducer,
     language: languageProviderReducer,
     form: formReducer,
+    screen: screenReducer,
     // user: userReducer,
     ...asyncReducers,
   });

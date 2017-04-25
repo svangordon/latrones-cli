@@ -10,6 +10,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import ScreenDimensionSpy from 'containers/ScreenDimensionSpy';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
@@ -24,8 +25,10 @@ const AppWrapper = styled.div`
 `;
 
 export function App(props) {
+  console.log("running app function, props ==", props.params);
   return (
     <AppWrapper>
+      <ScreenDimensionSpy />
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
