@@ -11,6 +11,7 @@ import messages from './messages';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    console.log("header props", this.props);
     return (
       <div>
         <Drawer open={true}>

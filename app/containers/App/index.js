@@ -9,6 +9,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import ScreenDimensionSpy from 'containers/ScreenDimensionSpy';
 import Header from 'components/Header';
@@ -25,7 +27,6 @@ const AppWrapper = styled.div`
 `;
 
 export function App(props) {
-  console.log("running app function, props ==", props.params);
   return (
     <AppWrapper>
       <ScreenDimensionSpy />
@@ -36,7 +37,7 @@ export function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
-      <Header />
+      <Header height={props.height} width={props.width}/>
       {React.Children.toArray(props.children)}
       <Footer />
     </AppWrapper>
@@ -45,6 +46,14 @@ export function App(props) {
 
 App.propTypes = {
   children: React.PropTypes.node,
+  dimensions: React.PropTypes.object,
 };
 
-export default withProgressBar(App);
+const mapStateToProps = createStructuredSelector({
+  height: (state) => state.get('screen').get('height'),
+  width: (state) => state.get('screen').get('width'),
+});
+
+export default connect(mapStateToProps)(withProgressBar(App));
+
+// export default UserIsAuthenticated(connect(mapStateToProps, mapDispatchToProps)(HomePage));
