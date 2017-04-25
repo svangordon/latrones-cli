@@ -16,13 +16,13 @@ const makeSelectUser = () => createSelector(
 // const selectScreen = (state) => state.get('screen')
 // const selectWidth = (screenState) => screenState.get('width');
 const makeSelectWidth = () => createSelector(
-  (state, props) => {console.log('props ==', props);return state.get('screen')},
+  (state, props) => state.get('screen'),
   (screenState) => screenState.get('width')
 );
 
 const makeSelectRoute = () => createSelector(
   state => state.get('route'),
-  routeState => {console.log('routeState ==', routeState); return routeState}
+  routeState => routeState
 );
 /**
  * Default selector used by Navbar

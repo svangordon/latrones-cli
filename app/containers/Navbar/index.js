@@ -47,7 +47,6 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
   }
 
   render() {
-    console.log("header props", this.props);
     if (!this.allowedRoutes.includes(this.props.location)) {
       return null;
     }
@@ -62,22 +61,13 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
 Navbar.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
-//
-// const mapStateToProps = (state, ownProps) => {
-//   console.log('ownProps ==', ownProps);
-//   return {}
-// }
 
-// const makeMapStateToProps = ()
-//
 const mapStateToProps = createStructuredSelector({
   // Navbar: makeSelectNavbar(),
   user: makeSelectUser(),
   width: makeSelectWidth(),
   // route: makeSelectRoute(),
 });
-
-console.log('mapStateToProps', mapStateToProps);
 
 function mapDispatchToProps(dispatch) {
   return {
