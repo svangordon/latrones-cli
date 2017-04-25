@@ -9,8 +9,15 @@ import { connect } from 'react-redux';
 import { setScreenDimensions } from './actions';
 
 export class ScreenDimensionSpy extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
-  componentWillMount() {
+  // constructor(props) {
+  //   super(props);
+  //   // this.updateDimensions();
+  //   // this.state = {
+  //   //   height: window.innerHeight,
+  //   //   width: window.innerWidth
+  //   // };
+  // }
+  componentDidMount() {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
