@@ -1,22 +1,27 @@
 /**
 *
-* Dashboard
+* PlayerCard
 *
-* A summary of a user's recent activity
+* A bit of information about a user, incl name, rating, games played
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import Gravatar from 'react-gravatar';
 import messages from './messages';
 import md5 from 'md5';
 
-function Dashboard({email, nickname}) {
+const Nickname = styled.p`
+  font-size: 1.5em;
+  display: inline;
+`;
+
+function PlayerCard({email, nickname}) {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      <Nickname children={nickname}/>
       <Gravatar
         email={email ? md5(email) : md5(nickname)}
       />
@@ -24,9 +29,9 @@ function Dashboard({email, nickname}) {
   );
 }
 
-Dashboard.propTypes = {
+PlayerCard.propTypes = {
   nickname: React.PropTypes.string,
   email: React.PropTypes.string,
 };
 
-export default Dashboard;
+export default PlayerCard;
