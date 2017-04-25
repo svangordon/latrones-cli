@@ -12,7 +12,7 @@ import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
 import makeSelectNavbar from './selectors'; // Should I be bundling these all here...?
-import { makeSelectWidth, makeSelectUser } from './selectors';
+import { makeSelectWidth, makeSelectUser, makeSelectRoute } from './selectors';
 import messages from './messages';
 
 export class Navbar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -25,6 +25,7 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
 
     this.expandedSideNavWidth = 140;
     this.collapsedSideNavWidth = 50;
+    this.allowedRoutes = ['/', '/play'];
   }
 
   _handleCollapseDrawer() {
@@ -47,6 +48,9 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
 
   render() {
     console.log("header props", this.props);
+    if (!this.allowedRoutes.includes(this.props.location)) {
+      return null;
+    }
     if (this.props.width >= 960) {
       return this._renderSideNav();
     } else {
@@ -58,12 +62,22 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
 Navbar.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
+//
+// const mapStateToProps = (state, ownProps) => {
+//   console.log('ownProps ==', ownProps);
+//   return {}
+// }
 
+// const makeMapStateToProps = ()
+//
 const mapStateToProps = createStructuredSelector({
   // Navbar: makeSelectNavbar(),
   user: makeSelectUser(),
   width: makeSelectWidth(),
+  // route: makeSelectRoute(),
 });
+
+console.log('mapStateToProps', mapStateToProps);
 
 function mapDispatchToProps(dispatch) {
   return {

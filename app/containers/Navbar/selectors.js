@@ -8,22 +8,22 @@ import { createSelector } from 'reselect';
 /**
  * Other specific selectors
  */
-// const selectUser = () => (state) => {console.log('state ==', state);state.get('global').get('user')};
 const makeSelectUser = () => createSelector(
   state => state.get('global'),
-  // globalState => globalState.get('user'),
   (globalState) => globalState.get('user')
-  // selectUser(),
-  // (substate) => {console.log('substate ==', substate);substate ? substate.toJS() : null}
 );
 
-const selectScreen = (state) => state.get('screen')
-const selectWidth = (screenState) => screenState.get('width');
+// const selectScreen = (state) => state.get('screen')
+// const selectWidth = (screenState) => screenState.get('width');
 const makeSelectWidth = () => createSelector(
-  state => state.get('screen'),
+  (state, props) => {console.log('props ==', props);return state.get('screen')},
   (screenState) => screenState.get('width')
 );
 
+const makeSelectRoute = () => createSelector(
+  state => state.get('route'),
+  routeState => {console.log('routeState ==', routeState); return routeState}
+);
 /**
  * Default selector used by Navbar
  */
@@ -39,4 +39,5 @@ export {
   selectUser,
   makeSelectUser,
   makeSelectWidth,
+  makeSelectRoute,
 };

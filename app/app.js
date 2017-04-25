@@ -84,8 +84,8 @@ const rootRoute = {
 
 const render = (messages) => {
   ReactDOM.render(
-    <MuiThemeProvider>
-      <Provider store={store}>
+    <Provider store={store}>
+      <MuiThemeProvider>
         <LanguageProvider messages={messages}>
           <Router
             history={history}
@@ -97,8 +97,8 @@ const render = (messages) => {
             }
           />
         </LanguageProvider>
-      </Provider>
-    </MuiThemeProvider>,
+      </MuiThemeProvider>
+    </Provider>,
     document.getElementById('app')
   );
 };
