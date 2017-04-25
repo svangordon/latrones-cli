@@ -8,16 +8,20 @@ import { createSelector } from 'reselect';
 /**
  * Other specific selectors
  */
-const selectUser = () => (state) => state.get('global').get('user');
+// const selectUser = () => (state) => {console.log('state ==', state);state.get('global').get('user')};
 const makeSelectUser = () => createSelector(
-  selectUser(),
-  (substate) => substate ? substate.toJS() : null
+  state => state.get('global'),
+  // globalState => globalState.get('user'),
+  (globalState) => globalState.get('user')
+  // selectUser(),
+  // (substate) => {console.log('substate ==', substate);substate ? substate.toJS() : null}
 );
 
-const selectWidth = (state) => state.get('screen').get('width');
+const selectScreen = (state) => state.get('screen')
+const selectWidth = (screenState) => screenState.get('width');
 const makeSelectWidth = () => createSelector(
-  selectWidth(),
-  (substate) => substate.toJS()
+  state => state.get('screen'),
+  (screenState) => screenState.get('width')
 );
 
 /**
