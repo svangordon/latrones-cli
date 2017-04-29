@@ -12,6 +12,9 @@ import makeSelectRegisterPage from './selectors';
 import messages from './messages';
 import RegisterForm from 'components/RegisterForm';
 import { register } from './actions';
+import {
+  UserIsNotAuthenticated
+} from 'utils/wrappers';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -41,4 +44,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default UserIsNotAuthenticated(connect(mapStateToProps, mapDispatchToProps)(RegisterPage));

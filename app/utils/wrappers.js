@@ -26,6 +26,6 @@ export const UserIsNotAuthenticated = UserAuthWrapper({
       return (global.get("user") === null || global.get("user") === {});
   },
   // TODO: Change fallthrough redirect
-  failureRedirectPath: (state, ownProps) => {return ownProps.location.query.redirect || '/foo'},
+  failureRedirectPath: (state, ownProps) => {return ownProps.location.query.redirect || '/'},
   allowRedirectBack: false
 })
