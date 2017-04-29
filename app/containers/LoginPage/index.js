@@ -8,6 +8,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+
+import A from 'components/A';
 import makeSelectLoginPage from './selectors';
 import {
   makeSelectUser,
@@ -32,7 +34,6 @@ import {
 export class LoginPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentWillMount() {
-    console.log("mounting LoginPage");
     this.props.refreshToken();
   }
 
@@ -44,6 +45,8 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
         />
         {this.props.error ? <p>{this.props.error}</p> : null}
         <a>Login with Twitter</a>
+        <br />
+        <A href="/register">{"Create new user"}</A>
       </div>
     );
   }

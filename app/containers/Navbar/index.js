@@ -29,25 +29,36 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
     this.expandedSideNavWidth = 140;
     this.collapsedSideNavWidth = 50;
     this.allowedRoutes = ['/', '/play'];
+    const MenuItems = [
+      {
+        primaryText: "Latr"
+      },
+      {
+        primaryText: "Home"
+      },
+      {
+        primaryText: "Play"
+      }
+    ]
   }
 
   _handleCollapseDrawer() {
     this.setState({collapseDrawer: !this.state.collapseDrawer});
   }
 
-  _renderSideNav(options) {
-    return (
-      <Drawer open={true} width={options.width}>
-        { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}
-      </Drawer>
-    );
-  }
-
-  _renderTopNav() {
-    return (
-      <AppBar />
-    );
-  }
+  // _renderSideNav(options) {
+  //   return (
+  //     <Drawer open={true} width={options.width}>
+  //       { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}
+  //     </Drawer>
+  //   );
+  // }
+  //
+  // _renderTopNav() {
+  //   return (
+  //     <AppBar />
+  //   );
+  // }
 
   render() {
     if (!this.allowedRoutes.includes(this.props.location)) {
@@ -55,12 +66,13 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
     }
     if (this.props.width >= 960) {
       const expanded = this.props.width >= 1280 && !this.state.collapseDrawer;
-      return <SideNav expanded={expanded} />
-      // const options = {
-      //   width: this.props.width >= 1280 && !this.state.collapseDrawer ?
-      //     this.expandedSideNavWidth : this.collapsedSideNavWidth
-      // };
-      // return this._renderSideNav(options);
+      return (
+        <SideNav
+          expanded={expanded}
+          handleCollapse={this._handleCollapseDrawer}
+        />
+      );
+
     } else {
       return <TopNav />
       // return this._renderTopNav();

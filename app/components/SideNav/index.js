@@ -14,17 +14,7 @@ import messages from './messages';
 
 function SideNav({expanded}) {
   const width = expanded ? 140 : 50;
-  const MenuItems = [
-    {
-      primaryText: "Latr"
-    },
-    {
-      primaryText: "Home"
-    },
-    {
-      primaryText: "Play"
-    }
-  ]
+
   return (
     <Drawer open={true} width={width}>
       { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}

@@ -27,6 +27,12 @@ import {
   REFRESH_TOKEN_ERROR,
 } from 'containers/LoginPage/constants';
 
+import {
+    REGISTER_USER_REQUESTED,
+    REGISTER_USER_SUCCESS,
+    REGISTER_USER_ERROR
+} from 'containers/RegisterPage/constants';
+
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
@@ -54,6 +60,19 @@ function appReducer(state = initialState, action) {
       return state
         .set('error', action.error)
         .set('loading', false);
+    case REGISTER_USER_REQUESTED:
+      return state
+        .set('loading', true)
+        .set('error', false)
+        .set('user', null); // Ought to be unnecessary
+    case REGISTER_USER_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('user', action.user);
+    case REGISTER_USER_ERROR:
+      return state
+        .set('loading', false)
+        .set('error', action.error);
     case REFRESH_TOKEN_REQUESTED:
       return state
         .set('loading', true)
