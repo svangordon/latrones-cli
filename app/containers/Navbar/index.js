@@ -61,13 +61,14 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
   // }
 
   render() {
-    if (!this.allowedRoutes.includes(this.props.location)) {
+    if (!this.allowedRoutes.includes(this.props.location) || !this.props.user) {
       return null;
     }
     if (this.props.width >= 960) {
       const expanded = this.props.width >= 1280 && !this.state.collapseDrawer;
       return (
         <SideNav
+          avatar={this.props.user.avatar}
           expanded={expanded}
           handleCollapse={this._handleCollapseDrawer}
         />

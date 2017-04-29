@@ -10,4 +10,8 @@ export default defineMessages({
     id: 'app.containers.Navbar.header',
     defaultMessage: 'This is Navbar container !',
   },
+  home: {
+    id: 'app.containers.Navbar.home',
+    defaultMessage: 'Home',
+  }
 });
