@@ -90,6 +90,26 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/play',
+      name: 'playPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/PlayPage/reducer'),
+          import('containers/PlayPage/sagas'),
+          import('containers/PlayPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('playPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

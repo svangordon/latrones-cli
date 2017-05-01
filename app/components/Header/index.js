@@ -10,6 +10,7 @@ import HeaderLink from './HeaderLink';
 import Banner from './banner.jpg';
 import messages from './messages';
 
+// This has been unplugged, and replaced with a container of the same type
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   constructor(props) {

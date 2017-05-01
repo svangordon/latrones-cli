@@ -46,20 +46,6 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
     this.setState({collapseDrawer: !this.state.collapseDrawer});
   }
 
-  // _renderSideNav(options) {
-  //   return (
-  //     <Drawer open={true} width={options.width}>
-  //       { ["first", "second", "third"].map((item, i) => (<div key={i}>{item}</div>))}
-  //     </Drawer>
-  //   );
-  // }
-  //
-  // _renderTopNav() {
-  //   return (
-  //     <AppBar />
-  //   );
-  // }
-
   render() {
     if (!this.allowedRoutes.includes(this.props.location) || !this.props.user) {
       return null;
