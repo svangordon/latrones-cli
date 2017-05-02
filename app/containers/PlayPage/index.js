@@ -8,14 +8,21 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
+import Chessdiagram from 'react-chessdiagram';
 import makeSelectPlayPage from './selectors';
 import messages from './messages';
+
+import BoardWidget from 'components/BoardWidget';
+import GameWidget from 'components/GameWidget';
+import SocialWidget from 'components/SocialWidget';
 
 export class PlayPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <FormattedMessage {...messages.header} />
+        <BoardWidget />
+        <GameWidget />
+        <SocialWidget />
       </div>
     );
   }
