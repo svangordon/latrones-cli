@@ -9,19 +9,23 @@ import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import Chessdiagram from 'react-chessdiagram';
-import makeSelectPlayPage from './selectors';
-import messages from './messages';
 
 import BoardWidget from 'components/BoardWidget';
 import GameWidget from 'components/GameWidget';
 import SocialWidget from 'components/SocialWidget';
+
+import { matchmakingRequested } from './actions';
+import makeSelectPlayPage from './selectors';
+import messages from './messages';
 
 export class PlayPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <BoardWidget />
-        <GameWidget />
+        <GameWidget
+          requestMatchmaking={this.props.requestMatchmaking}
+        />
         <SocialWidget />
       </div>
     );
@@ -39,6 +43,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    requestMatchmaking: (options) => {console.log('prop fired');dispatch(requestMatchmaking(options))},
   };
 }
 

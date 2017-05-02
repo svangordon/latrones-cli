@@ -12,6 +12,7 @@ import {
 } from './constants';
 
 export function matchmakingRequested(options) {
+  console.log("matchmakingRequested");
   return {
     type: MATCHMAKING_REQUESTED,
     options

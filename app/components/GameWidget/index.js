@@ -48,7 +48,7 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
         {this.props.activeGame ?
           <GameTab game={activeGame} /> :
           <MatchmakingTab
-            requestGame={this.props.requestGame}
+            requestMatchmaking={this.props.requestMatchmaking}
           />
         }
       </div>
@@ -58,7 +58,7 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
 
 GameWidget.propTypes = {
   activeGame: React.PropTypes.object,
-  requestGame: React.PropTypes.func,
+  requestMatchmaking: React.PropTypes.func,
 };
 
 export default GameWidget;
