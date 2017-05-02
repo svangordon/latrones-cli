@@ -21,7 +21,7 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
           <RaisedButton
             label={"Play"}
             primary
-            onTouchTap={()=>{console.log(this.props);}/*this.props.requestMatchmaking*/}
+            onTouchTap={/*()=>{console.log(this.props);}*/this.props.requestMatchmaking}
           />
         </Paper>
       </div>

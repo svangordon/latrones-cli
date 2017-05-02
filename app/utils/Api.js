@@ -43,8 +43,22 @@ const register = (form) => {
   return request(baseUrl + stemUrl, options);
 }
 
+const matchmaking = (gameOptions) => {
+  const stemUrl = `games`;
+  const options = Object.assign(
+    {},
+    defaultOptions,
+    {
+      method: 'post',
+    }
+  );
+  console.log('matchmaking request');
+  return request(baseUrl + stemUrl, options);
+};
+
 module.exports = {
   login,
   register,
-  refreshToken
+  refreshToken,
+  matchmaking
 }

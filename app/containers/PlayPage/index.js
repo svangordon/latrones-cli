@@ -43,7 +43,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    requestMatchmaking: (options) => {console.log('prop fired');dispatch(requestMatchmaking(options))},
+    requestMatchmaking: (options) => {console.log('prop fired');dispatch(matchmakingRequested(options))},
   };
 }
 
