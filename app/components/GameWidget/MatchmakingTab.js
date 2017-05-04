@@ -7,6 +7,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
+import {List, ListItem} from 'material-ui/List';
 // import styled from 'styled-components';
 
 // import GameHistory from './GameHistory';
@@ -20,6 +21,15 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
       <div>
         <Paper>
           <p>Matchmaking Tab!</p>
+          {"Open Games"}
+          {this.props.games ? (<div>No games to show</div>) :
+          (
+            <List>
+              {this.props.openGames.map((game, i) => (
+                <ListItem key={i} primaryText={game.players[0].nickname} />
+              ))}
+            </List>
+          )}
           <RaisedButton
             label={"Play"}
             primary
