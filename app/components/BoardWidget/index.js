@@ -11,11 +11,25 @@ import Chessdiagram from 'react-chessdiagram';
 // import GameHistory from 'react-chessdiagram/src/GameHistory';
 
 class BoardWidget extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
+
+  _renderEmptyBoard() {
     return (
       <div style={{display: 'inline-block'}}>
         <Chessdiagram
-          fen={this.props.fen}
+          ranks={8}
+          files={8}
+        />
+      </div>
+    )
+  }
+
+  render() {
+    return !this.props.game ? this._renderEmptyBoard() : (
+      <div style={{display: 'inline-block'}}>
+        <Chessdiagram
+          fen={this.props.game ? this.props.game.initial_fen : ""}
+          ranks={this.props.game.ranks}
+          files={this.props.game.files}
         />
       </div>
     );
@@ -23,7 +37,7 @@ class BoardWidget extends React.PureComponent { // eslint-disable-line react/pre
 }
 
 BoardWidget.propTypes = {
-  fen: React.PropTypes.string,
+  game: React.PropTypes.object,
 };
 
 export default BoardWidget;
