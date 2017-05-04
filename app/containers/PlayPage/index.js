@@ -21,7 +21,11 @@ import messages from './messages';
 
 export class PlayPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
-    this.props.requestGamesList()
+    this.poller = setInterval(this.props.requestGamesList.bind(this), 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.poller);
   }
 
   render() {
