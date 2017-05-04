@@ -25,6 +25,9 @@ const styles = {
 };
 
 class GameWidget extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  // componentWillMount() {
+  //   this.props.requestGamesList()
+  // }
 
   render() {
     const tabs = [
@@ -49,6 +52,7 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
           <GameTab game={activeGame} /> :
           <MatchmakingTab
             requestMatchmaking={this.props.requestMatchmaking}
+            openGames={this.props.games.filter(game => game.status_id == 1)}
           />
         }
       </div>
@@ -59,6 +63,7 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
 GameWidget.propTypes = {
   activeGame: React.PropTypes.object,
   requestMatchmaking: React.PropTypes.func,
+  games: React.PropTypes.array,
 };
 
 export default GameWidget;

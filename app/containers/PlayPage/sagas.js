@@ -13,6 +13,9 @@ import {
   MATCHMAKING_REQUESTED,
   MATCHMAKING_SUCCESS,
   MATCHMAKING_ERROR,
+  GAMES_LIST_REQUESTED,
+  GAMES_LIST_SUCCESS,
+  GAMES_LIST_ERROR,
 } from './constants';
 import * as Api from 'utils/Api';
 
@@ -22,11 +25,22 @@ export function* matchmaking(action) {
     // const requestURL = `http://jsonplaceholder.typicode.com/users`;
     // console.log('point1', action)
     const game = yield call(Api.matchmaking, action.options);
-    // console.log('users', user);
     yield put({type: MATCHMAKING_SUCCESS, game});
   } catch (e) {
     const message = "Could not find game.";
     yield put({type: MATCHMAKING_ERROR, error: message});
+  }
+}
+
+export function* gamesList(action) {
+  try {
+    // const requestURL = `http://jsonplaceholder.typicode.com/users`;
+    // console.log('point1', action)
+    const games = yield call(Api.gamesList);
+    yield put({type: GAMES_LIST_SUCCESS, games});
+  } catch (e) {
+    const message = "Could not get games.";
+    yield put({type: GAMES_LIST_ERROR, error: message});
   }
 }
 
@@ -47,7 +61,8 @@ export function* matchmaking(action) {
  * Github repos request/response handler
  */
  function* matchmakingSaga() {
-   yield takeLatest(MATCHMAKING_REQUESTED, matchmaking);
+  yield takeLatest(MATCHMAKING_REQUESTED, matchmaking);
+  yield takeLatest(GAMES_LIST_REQUESTED, gamesList);
   //  yield takeLatest(REFRESH_TOKEN_REQUESTED, refreshToken);
  }
 

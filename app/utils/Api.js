@@ -44,6 +44,7 @@ const register = (form) => {
 }
 
 const matchmaking = (gameOptions) => {
+  console.log('matchmaking request');
   const stemUrl = `games`;
   const options = Object.assign(
     {},
@@ -52,13 +53,26 @@ const matchmaking = (gameOptions) => {
       method: 'post',
     }
   );
-  console.log('matchmaking request');
   return request(baseUrl + stemUrl, options);
 };
+
+const gamesList = () => {
+  console.log('requesting gamesList');
+  const stemUrl = `games`;
+  const options = Object.assign(
+    {},
+    defaultOptions,
+    {
+      method: 'get'
+    }
+  );
+  return request(baseUrl + stemUrl, options);
+}
 
 module.exports = {
   login,
   register,
   refreshToken,
-  matchmaking
+  matchmaking,
+  gamesList
 }

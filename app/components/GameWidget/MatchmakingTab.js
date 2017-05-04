@@ -13,6 +13,7 @@ import Paper from 'material-ui/Paper';
 // import GameHistory from 'react-chessdiagram/src/GameHistory';
 
 class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  
   render() {
     return (
       <div>
@@ -32,6 +33,7 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
 MatchmakingTab.propTypes = {
   pgn: React.PropTypes.array,
   requestMatchmaking: React.PropTypes.func,
+  requestGamesList: React.PropTypes.func,
 };
 
 export default MatchmakingTab;

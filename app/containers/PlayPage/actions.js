@@ -4,18 +4,24 @@
  *
  */
 
+// TODO: Upon further reflection, I think that the success / failure actions are
+// unnecessary. There dispatched i nthe saga and caught in the reducer
+
 import {
   DEFAULT_ACTION,
   MATCHMAKING_REQUESTED,
   MATCHMAKING_SUCCESS,
-  MATCHMAKING_ERROR
+  MATCHMAKING_ERROR,
+  GAMES_LIST_REQUESTED,
+  GAMES_LIST_SUCCESS,
+  GAMES_LIST_ERROR,
 } from './constants';
 
-export function matchmakingRequested(options) {
+export function matchmakingRequested() {
   console.log("matchmakingRequested");
   return {
-    type: MATCHMAKING_REQUESTED,
-    options
+    type: MATCHMAKING_REQUESTED
+
   }
 }
 
@@ -29,6 +35,28 @@ export function matchmakingSuccess(game) {
 export function matchmakingError(error) {
   return {
     type: MATCHMAKING_ERROR,
+    error
+  }
+}
+
+export function gamesListRequested() {
+  console.log("gamesListRequested");
+  return {
+    type: GAMES_LIST_REQUESTED
+
+  }
+}
+
+export function gamesListSuccess(games) {
+  return {
+    type: GAMES_LIST_SUCCESS,
+    games
+  }
+}
+
+export function gamesListError(error) {
+  return {
+    type: GAMES_LIST_ERROR,
     error
   }
 }

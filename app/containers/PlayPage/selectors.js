@@ -8,7 +8,11 @@ const selectPlayPageDomain = () => (state) => state.get('playPage');
 /**
  * Other specific selectors
  */
-
+const selectGames = () => (state) => state.get('playPage').get('games');
+const makeSelectOpenGames = () => createSelector(
+  selectGames(),
+  (substate) => substate.toJS().filter(game => game.status_id == 1)
+);
 
 /**
  * Default selector used by PlayPage
@@ -22,4 +26,5 @@ const makeSelectPlayPage = () => createSelector(
 export default makeSelectPlayPage;
 export {
   selectPlayPageDomain,
+  makeSelectOpenGames,
 };
