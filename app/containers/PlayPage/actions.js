@@ -15,6 +15,7 @@ import {
   GAMES_LIST_REQUESTED,
   GAMES_LIST_SUCCESS,
   GAMES_LIST_ERROR,
+  POLL_GAME_REQUESTED,
 } from './constants';
 
 export function matchmakingRequested() {
@@ -40,7 +41,6 @@ export function matchmakingError(error) {
 }
 
 export function gamesListRequested() {
-  console.log("gamesListRequested");
   return {
     type: GAMES_LIST_REQUESTED
 
@@ -58,6 +58,13 @@ export function gamesListError(error) {
   return {
     type: GAMES_LIST_ERROR,
     error
+  }
+}
+
+export function pollGame(gameId) {
+  return {
+    type: POLL_GAME_REQUESTED,
+    gameId
   }
 }
 

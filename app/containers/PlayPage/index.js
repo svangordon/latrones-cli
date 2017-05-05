@@ -14,7 +14,7 @@ import BoardWidget from 'components/BoardWidget';
 import GameWidget from 'components/GameWidget';
 import SocialWidget from 'components/SocialWidget';
 
-import { matchmakingRequested, gamesListRequested } from './actions';
+import { matchmakingRequested, pollActiveGame, gamesListRequested } from './actions';
 import makeSelectPlayPage from './selectors';
 import { makeSelectOpenGames } from './selectors';
 import messages from './messages';
@@ -26,6 +26,13 @@ export class PlayPage extends React.PureComponent { // eslint-disable-line react
 
   componentWillUnmount() {
     clearInterval(this.poller);
+  }
+
+  _activeGamePoller() {
+    if (this.props.PlayPage.activeGame) {
+      this.poller = setTimeout(this._activeGamePoller.bind(this));
+      this.props.getActiveGame
+    }
   }
 
   render() {

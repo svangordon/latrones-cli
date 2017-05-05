@@ -46,7 +46,6 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
         <p>Matchmaking Tab</p>
       </Tab>),
     ];
-    console.log('GameWidget games ==', this.props.games);
     return (
       <div style={{display: 'inline-block'}}>
         {this.props.activeGame ?

@@ -44,6 +44,18 @@ export function* gamesList(action) {
   }
 }
 
+export function* pollGame(action) {
+  try {
+    // const requestURL = `http://jsonplaceholder.typicode.com/users`;
+    // console.log('point1', action)
+    const game = yield call(Api.pollGame, action.gameId);
+    yield put({type: POLL_GAME_SUCCESS, game});
+  } catch (e) {
+    const message = "Could not find game.";
+    yield put({type: POLL_GAME_ERROR, error: message});
+  }
+}
+
 // export function* refreshToken(action) {
 //   try {
 //     console.log("refreshing token");

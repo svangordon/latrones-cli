@@ -16,7 +16,7 @@ import {List, ListItem} from 'material-ui/List';
 class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    console.log('openGames ==', this.props.openGames);
+    // console.log('openGames ==', this.props.openGames);
     return (
       <div>
         <Paper>

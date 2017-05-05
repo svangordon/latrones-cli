@@ -57,8 +57,21 @@ const matchmaking = (gameOptions) => {
 };
 
 const gamesList = () => {
-  console.log('requesting gamesList');
+  // console.log('requesting gamesList');
   const stemUrl = `games`;
+  const options = Object.assign(
+    {},
+    defaultOptions,
+    {
+      method: 'get'
+    }
+  );
+  return request(baseUrl + stemUrl, options);
+}
+
+const pollGame = (gameId) => {
+  console.log('polling game');
+  const stemUrl = `game/` + gameId;
   const options = Object.assign(
     {},
     defaultOptions,
@@ -74,5 +87,6 @@ module.exports = {
   register,
   refreshToken,
   matchmaking,
-  gamesList
+  gamesList,
+  pollGame,
 }
