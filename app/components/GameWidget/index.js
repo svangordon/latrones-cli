@@ -48,8 +48,8 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
     ];
     return (
       <div style={{display: 'inline-block'}}>
-        {this.props.activeGame ?
-          <GameTab game={activeGame} /> :
+        {this.props.game ?
+          <GameTab game={this.props.game} /> :
           <MatchmakingTab
             requestMatchmaking={this.props.requestMatchmaking}
             openGames={this.props.games.filter(game => game.status_id == 1)}
@@ -61,7 +61,7 @@ class GameWidget extends React.PureComponent { // eslint-disable-line react/pref
 }
 
 GameWidget.propTypes = {
-  activeGame: React.PropTypes.object,
+  game: React.PropTypes.object,
   requestMatchmaking: React.PropTypes.func,
   games: React.PropTypes.array,
 };

@@ -42,6 +42,7 @@ export class PlayPage extends React.PureComponent { // eslint-disable-line react
         <GameWidget
           requestMatchmaking={this.props.requestMatchmaking}
           games={this.props.PlayPage.games}
+          game={this.props.PlayPage.activeGame}
         />
         <SocialWidget />
       </div>
