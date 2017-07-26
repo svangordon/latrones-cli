@@ -1,15 +1,18 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 // import request from 'utils/request';
-import {
-  USER_LOGIN_REQUESTED,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_ERROR,
-} from 'containers/App/constants';
+// import {
+//   USER_LOGIN_REQUESTED,
+//   USER_LOGIN_SUCCESS,
+//   USER_LOGIN_ERROR,
+// } from 'containers/App/constants';
 import * as Api from 'utils/Api';
 import {
   REFRESH_TOKEN_REQUESTED,
   REFRESH_TOKEN_SUCCESS,
   REFRESH_TOKEN_ERROR,
+  USER_LOGIN_REQUESTED,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
 } from './constants';
 
 // Individual exports for testing
