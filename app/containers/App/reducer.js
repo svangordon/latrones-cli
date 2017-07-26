@@ -13,53 +13,29 @@
 import { fromJS } from 'immutable';
 
 import {
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS,
-  LOAD_REPOS_ERROR,
-  USER_LOGIN_REQUESTED,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_ERROR,
-} from './constants';
-
-import {
   REFRESH_TOKEN_REQUESTED,
   REFRESH_TOKEN_SUCCESS,
   REFRESH_TOKEN_ERROR,
+  USER_LOGIN_REQUESTED,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_ERROR,
 } from 'containers/LoginPage/constants';
 
 import {
     REGISTER_USER_REQUESTED,
     REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR
+    REGISTER_USER_ERROR,
 } from 'containers/RegisterPage/constants';
 
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: false,
-  userData: {
-    repositories: false,
-  },
   user: null,
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
-    case LOAD_REPOS_SUCCESS:
-      return state
-        .setIn(['userData', 'repositories'], action.repos)
-        .set('loading', false)
-        .set('currentUser', action.username);
-    case LOAD_REPOS_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
     case REGISTER_USER_REQUESTED:
       return state
         .set('loading', true)
@@ -88,17 +64,17 @@ function appReducer(state = initialState, action) {
     case USER_LOGIN_REQUESTED:
       return state
         .set('loading', true)
-        .set('error', false)
+        .set('error', false);
         // .set('user', null) // not sure if we want to do this?
     case USER_LOGIN_SUCCESS:
-      console.log("user loging success fired");
+      console.log('user loging success fired');
       return state
         .set('user', action.user)
-        .set('loading', false)
+        .set('loading', false);
     case USER_LOGIN_ERROR:
       return state
         .set('error', action.error)
-        .set('loading', false)
+        .set('loading', false);
     default:
       return state;
   }
