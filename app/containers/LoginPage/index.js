@@ -60,7 +60,7 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
 
 LoginPage.propTypes = {
   // dispatch: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  error: PropTypes.bool,
   login: PropTypes.func.isRequired,
   refreshToken: PropTypes.func.isRequired,
 };
