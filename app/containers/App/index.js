@@ -48,7 +48,10 @@ export function App(props) {
 
 App.propTypes = {
   children: React.PropTypes.node,
-  location: React.PropTypes.objectOf(React.PropTypes.string),
+  location: React.PropTypes.shape({
+    pathname: React.PropTypes.string,
+    query: React.PropTypes.object,
+  }),
   // dimensions: React.PropTypes.object,
 };
 

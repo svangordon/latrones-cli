@@ -10,46 +10,46 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import {
-  makeSelectRepos,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectUser,
-} from 'containers/App/selectors';
+// import {
+  // makeSelectRepos,
+  // makeSelectLoading,
+  // makeSelectError,
+  // makeSelectUser,
+// } from 'containers/App/selectors';
 import PlayerCard from 'components/PlayerCard';
 import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
+// import ReposList from 'components/ReposList';
 // import { routerActions } from 'react-router-redux';
 import { UserIsAuthenticated } from 'utils/wrappers';
 
-import AtPrefix from './AtPrefix';
+// import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
+// import Form from './Form';
+// import Input from './Input';
 import Section from './Section';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+// import { loadRepos } from '../App/actions';
+// import { changeUsername } from './actions';
+// import { makeSelectUsername } from './selectors';
 // import { UserAuthWrapper } from 'redux-auth-wrapper';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
-  }
+  // componentDidMount() {
+  //   // if (this.props.username && this.props.username.trim().length > 0) {
+  //   //   this.props.onSubmitForm();
+  //   // }
+  // }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
+    // const { loading, error, repos } = this.props;
+    // const reposListProps = {
+    //   loading,
+    //   error,
+    //   repos,
+    // };
 
     return (
       <article>
@@ -76,22 +76,6 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <H2>
               <FormattedMessage {...messages.trymeHeader} />
             </H2>
-            <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="mxstbr"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </Form>
-            <ReposList {...reposListProps} />
           </Section>
         </div>
       </article>
@@ -100,39 +84,40 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 }
 
 HomePage.propTypes = {
-  loading: React.PropTypes.bool,
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.bool,
-  ]),
-  repos: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.bool,
-  ]),
-  onSubmitForm: React.PropTypes.func,
-  onChangeUsername: React.PropTypes.func,
+  // loading: React.PropTypes.bool,
+  // error: React.PropTypes.oneOfType([
+  //   React.PropTypes.object,
+  //   React.PropTypes.bool,
+  // ]),
+  // repos: React.PropTypes.oneOfType([
+  //   React.PropTypes.array,
+  //   React.PropTypes.bool,
+  // ]),
+  // onSubmitForm: React.PropTypes.func,
+  // onChangeUsername: React.PropTypes.func,
   user: React.PropTypes.object,
-  username: React.PropTypes.string,
+  // username: React.PropTypes.string,
 };
 
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
-}
+// // Left over from boilerplate; get rid of it
+// export function mapDispatchToProps(dispatch) {
+//   return {
+//     // onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
+//     // onSubmitForm: (evt) => {
+//     //   if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+//     //   dispatch(loadRepos());
+//     // },
+//   };
+// }
 
 const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  user: makeSelectUser(),
+  // repos: makeSelectRepos(),
+  // username: makeSelectUsername(),
+  // loading: makeSelectLoading(),
+  // error: makeSelectError(),
+  // user: makeSelectUser(),
 });
 
 // Wrap the component to inject dispatch and state into it
-export default UserIsAuthenticated(connect(mapStateToProps, mapDispatchToProps)(HomePage));
+export default UserIsAuthenticated(connect(mapStateToProps/* , mapDispatchToProps*/)(HomePage));
 // export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
