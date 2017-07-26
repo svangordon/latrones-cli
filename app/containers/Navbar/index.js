@@ -65,9 +65,7 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
 Navbar.propTypes = {
   // dispatch: PropTypes.func.isRequired,
   location: React.PropTypes.string,
-  user: {
-    avatar: PropTypes.string,
-  },
+  user: React.PropTypes.objectOf(PropTypes.string),
   width: PropTypes.number,
 };
 
