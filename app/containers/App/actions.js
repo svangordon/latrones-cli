@@ -38,7 +38,7 @@ export function loadRepos() {
 export function loginUserRequested() {
   return {
     type: USER_LOGIN_REQUESTED,
-  }
+  };
 }
 
 /**
@@ -60,8 +60,8 @@ export function reposLoaded(repos, username) {
 export function userLoginSuccess(user) {
   return {
     type: USER_LOGIN_SUCCESS,
-    user
-  }
+    user,
+  };
 }
 
 /**
@@ -80,7 +80,7 @@ export function repoLoadingError(error) {
 
 export function userLoginError(error) {
   return {
-    type:  USER_LOGIN_ERROR,
+    type: USER_LOGIN_ERROR,
     error,
-  }
+  };
 }

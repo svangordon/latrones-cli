@@ -1,18 +1,29 @@
-
 import {
-  defaultAction,
-} from '../actions';
-import {
-  DEFAULT_ACTION,
+  USER_LOGIN_REQUESTED,
+  REFRESH_TOKEN_REQUESTED,
 } from '../constants';
 
+import {
+  login,
+  refreshToken,
+} from '../actions';
+
 describe('LoginPage actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('Login Action', () => {
+    it('has a type of USER_LOGIN_REQUESTED', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: USER_LOGIN_REQUESTED,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(login()).toEqual(expected);
+    });
+  });
+
+  describe('Refresh Token Action', () => {
+    it('has a type of REFRESH_TOKEN_REQUESTED', () => {
+      const expected = {
+        type: REFRESH_TOKEN_REQUESTED,
+      };
+      expect(refreshToken()).toEqual(expected);
     });
   });
 });

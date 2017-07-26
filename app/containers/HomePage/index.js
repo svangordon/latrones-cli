@@ -19,6 +19,9 @@ import {
 import PlayerCard from 'components/PlayerCard';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
+// import { routerActions } from 'react-router-redux';
+import { UserIsAuthenticated } from 'utils/wrappers';
+
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
@@ -28,9 +31,7 @@ import messages from './messages';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
-import { routerActions } from 'react-router-redux';
 // import { UserAuthWrapper } from 'redux-auth-wrapper';
-import { UserIsAuthenticated } from 'utils/wrappers.js'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**

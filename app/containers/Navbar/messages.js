@@ -13,5 +13,5 @@ export default defineMessages({
   home: {
     id: 'app.containers.Navbar.home',
     defaultMessage: 'Home',
-  }
+  },
 });

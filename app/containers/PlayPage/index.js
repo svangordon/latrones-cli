@@ -6,18 +6,17 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import Chessdiagram from 'react-chessdiagram';
+// import Chessdiagram from 'react-chessdiagram';
 
 import BoardWidget from 'components/BoardWidget';
 import GameWidget from 'components/GameWidget';
 import SocialWidget from 'components/SocialWidget';
 
-import { matchmakingRequested, pollActiveGame, gamesListRequested } from './actions';
-import makeSelectPlayPage from './selectors';
-import { makeSelectOpenGames } from './selectors';
-import messages from './messages';
+import { matchmakingRequested, gamesListRequested } from './actions';
+import { makeSelectOpenGames, makeSelectPlayPage } from './selectors';
+// import messages from './messages';
 
 export class PlayPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
@@ -28,17 +27,17 @@ export class PlayPage extends React.PureComponent { // eslint-disable-line react
     clearInterval(this.poller);
   }
 
-  _activeGamePoller() {
+  activeGamePoller() {
     if (this.props.PlayPage.activeGame) {
-      this.poller = setTimeout(this._activeGamePoller.bind(this));
-      this.props.getActiveGame
+      this.poller = setTimeout(this.activeGamePoller.bind(this));
+      this.props.getActiveGame();
     }
   }
 
   render() {
     return (
       <div>
-        <BoardWidget game={this.props.PlayPage.activeGame}/>
+        <BoardWidget game={this.props.PlayPage.activeGame} />
         <GameWidget
           requestMatchmaking={this.props.requestMatchmaking}
           games={this.props.PlayPage.games}
@@ -51,21 +50,29 @@ export class PlayPage extends React.PureComponent { // eslint-disable-line react
 }
 
 PlayPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  getActiveGame: PropTypes.func,
   requestMatchmaking: PropTypes.func.isRequired,
   requestGamesList: PropTypes.func,
+  PlayPage: {
+    games: PropTypes.array,
+    activeGame: PropTypes.object,
+  },
 };
 
 const mapStateToProps = createStructuredSelector({
   PlayPage: makeSelectPlayPage(),
-  // openGames: makeSelectOpenGames(),
+  openGames: makeSelectOpenGames(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    requestMatchmaking: (options) => {console.log('prop fired');dispatch(matchmakingRequested(options))},
-    requestGamesList: () => {dispatch(gamesListRequested())}
+    requestMatchmaking: (options) => {
+      console.log('prop fired');
+      dispatch(matchmakingRequested(options));
+    },
+    requestGamesList: () => { dispatch(gamesListRequested()); },
   };
 }
 

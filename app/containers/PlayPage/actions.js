@@ -19,53 +19,51 @@ import {
 } from './constants';
 
 export function matchmakingRequested() {
-  console.log("matchmakingRequested");
+  console.log('matchmakingRequested');
   return {
-    type: MATCHMAKING_REQUESTED
-
-  }
+    type: MATCHMAKING_REQUESTED,
+  };
 }
 
 export function matchmakingSuccess(game) {
   return {
     type: MATCHMAKING_SUCCESS,
-    game
-  }
+    game,
+  };
 }
 
 export function matchmakingError(error) {
   return {
     type: MATCHMAKING_ERROR,
-    error
-  }
+    error,
+  };
 }
 
 export function gamesListRequested() {
   return {
-    type: GAMES_LIST_REQUESTED
-
-  }
+    type: GAMES_LIST_REQUESTED,
+  };
 }
 
 export function gamesListSuccess(games) {
   return {
     type: GAMES_LIST_SUCCESS,
-    games
-  }
+    games,
+  };
 }
 
 export function gamesListError(error) {
   return {
     type: GAMES_LIST_ERROR,
-    error
-  }
+    error,
+  };
 }
 
 export function pollGame(gameId) {
   return {
     type: POLL_GAME_REQUESTED,
-    gameId
-  }
+    gameId,
+  };
 }
 
 export function defaultAction() {

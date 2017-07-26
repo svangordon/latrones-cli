@@ -9,34 +9,35 @@ import { createSelector } from 'reselect';
  * Other specific selectors
  */
 const makeSelectUser = () => createSelector(
-  state => state.get('global'),
+  (state) => state.get('global'),
   (globalState) => globalState.get('user')
 );
 
 // const selectScreen = (state) => state.get('screen')
 // const selectWidth = (screenState) => screenState.get('width');
 const makeSelectWidth = () => createSelector(
-  (state, props) => state.get('screen'),
+  (state) => state.get('screen'),
   (screenState) => screenState.get('width')
 );
 
 const makeSelectRoute = () => createSelector(
-  state => state.get('route'),
-  routeState => routeState
+  (state) => state.get('route'),
+  (routeState) => routeState
 );
 /**
  * Default selector used by Navbar
  */
 
 const makeSelectNavbar = () => createSelector(
-  selectNavbarDomain(),
+  // selectNavbarDomain(),
   (substate) => substate ? substate.toJS() : null
 );
 
-export default makeSelectNavbar;
+// export default makeSelectNavbar;
 export {
-  selectNavbarDomain,
-  selectUser,
+  // selectNavbarDomain,
+  // selectUser,
+  makeSelectNavbar,
   makeSelectUser,
   makeSelectWidth,
   makeSelectRoute,

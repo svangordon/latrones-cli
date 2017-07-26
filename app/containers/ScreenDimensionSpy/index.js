@@ -19,17 +19,17 @@ export class ScreenDimensionSpy extends React.PureComponent { // eslint-disable-
   // }
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
+    window.addEventListener('resize', this.updateDimensions.bind(this));
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
+    window.removeEventListener('resize', this.updateDimensions.bind(this));
   }
 
   updateDimensions() {
     this.props.setScreenDimensions({
       height: window.innerHeight,
-      width: window.innerWidth
+      width: window.innerWidth,
     });
   }
 
@@ -39,8 +39,8 @@ export class ScreenDimensionSpy extends React.PureComponent { // eslint-disable-
 }
 
 ScreenDimensionSpy.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  setScreenDimensions: PropTypes.func.isRequired
+  // dispatch: PropTypes.func.isRequired,
+  setScreenDimensions: PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {

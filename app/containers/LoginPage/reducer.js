@@ -7,9 +7,9 @@
 import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
-  USER_LOGIN_REQUESTED,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAILURE,
+  // USER_LOGIN_REQUESTED,
+  // USER_LOGIN_SUCCESS,
+  // USER_LOGIN_FAILURE,
 } from './constants';
 
 const initialState = fromJS({});

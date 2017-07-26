@@ -6,44 +6,42 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
+// import Drawer from 'material-ui/Drawer';
+// import AppBar from 'material-ui/AppBar';
 
 import SideNav from 'components/SideNav';
 import TopNav from 'components/TopNav';
 
-import makeSelectNavbar from './selectors';
-import { makeSelectWidth, makeSelectUser, makeSelectRoute } from './selectors';
-import messages from './messages';
+import { makeSelectWidth, makeSelectUser } from './selectors';
+// import messages from './messages';
 
 export class Navbar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.state = {
-      collapseDrawer: false
+      collapseDrawer: false,
     };
-    this._handleCollapseDrawer = this._handleCollapseDrawer.bind(this);
+    this.handleCollapseDrawer = this.handleCollapseDrawer.bind(this);
 
     this.expandedSideNavWidth = 140;
     this.collapsedSideNavWidth = 50;
     this.allowedRoutes = ['/', '/play'];
-    const MenuItems = [
-      {
-        primaryText: "Latr"
-      },
-      {
-        primaryText: "Home"
-      },
-      {
-        primaryText: "Play"
-      }
-    ]
+    // const MenuItems = [
+    //   {
+    //     primaryText: 'Latr',
+    //   },
+    //   {
+    //     primaryText: 'Home',
+    //   },
+    //   {
+    //     primaryText: 'Play',
+    //   },
+    // ];
   }
 
-  _handleCollapseDrawer() {
-    this.setState({collapseDrawer: !this.state.collapseDrawer});
+  handleCollapseDrawer() {
+    this.setState({ collapseDrawer: !this.state.collapseDrawer });
   }
 
   render() {
@@ -56,19 +54,21 @@ export class Navbar extends React.PureComponent { // eslint-disable-line react/p
         <SideNav
           avatar={this.props.user.avatar}
           expanded={expanded}
-          handleCollapse={this._handleCollapseDrawer}
+          handleCollapse={this.handleCollapseDrawer}
         />
       );
-
-    } else {
-      return <TopNav />
-      // return this._renderTopNav();
     }
+    return <TopNav />;
   }
 }
 
 Navbar.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  location: React.PropTypes.string,
+  user: {
+    avatar: PropTypes.string,
+  },
+  width: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({

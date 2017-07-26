@@ -7,7 +7,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 // import styled from 'styled-components';
 
 // import GameHistory from './GameHistory';
@@ -21,7 +21,7 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
       <div>
         <Paper>
           <p>Matchmaking Tab!</p>
-          {"Open Games"}
+          {'Open Games'}
           {this.props.games ? (<div>No games to show</div>) :
           (
             <List>
@@ -31,9 +31,9 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
             </List>
           )}
           <RaisedButton
-            label={"Play"}
+            label={'Play'}
             primary
-            onTouchTap={/*()=>{console.log(this.props);}*/this.props.requestMatchmaking}
+            onTouchTap={this.props.requestMatchmaking}
           />
         </Paper>
       </div>
@@ -42,10 +42,11 @@ class MatchmakingTab extends React.PureComponent { // eslint-disable-line react/
 }
 
 MatchmakingTab.propTypes = {
-  pgn: React.PropTypes.array,
+  // pgn: React.PropTypes.array,
+  games: React.PropTypes.array,
   requestMatchmaking: React.PropTypes.func,
-  requestGamesList: React.PropTypes.func,
-  openGames: React.PropTypes.array
+  // requestGamesList: React.PropTypes.func,
+  openGames: React.PropTypes.array,
 };
 
 export default MatchmakingTab;

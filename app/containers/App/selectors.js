@@ -53,5 +53,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocationState,
-  makeSelectUser
+  makeSelectUser,
 };

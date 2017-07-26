@@ -7,10 +7,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-
-import { FormattedMessage } from 'react-intl';
 import Gravatar from 'react-gravatar';
-import messages from './messages';
 import md5 from 'md5';
 
 const Nickname = styled.p`
@@ -18,10 +15,12 @@ const Nickname = styled.p`
   display: inline;
 `;
 
-function PlayerCard({email, nickname}) {
+function PlayerCard({ email, nickname }) {
   return (
     <div>
-      <Nickname children={nickname}/>
+      <Nickname>
+        {nickname}
+      </Nickname>
       <Gravatar
         email={email ? md5(email) : md5(nickname)}
       />

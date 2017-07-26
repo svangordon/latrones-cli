@@ -12,22 +12,22 @@ import Chessdiagram from 'react-chessdiagram';
 
 class BoardWidget extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
-  _renderEmptyBoard() {
+  renderEmptyBoard() {
     return (
-      <div style={{display: 'inline-block'}}>
+      <div style={{ display: 'inline-block' }}>
         <Chessdiagram
           ranks={8}
           files={8}
         />
       </div>
-    )
+    );
   }
 
   render() {
-    return !this.props.game ? this._renderEmptyBoard() : (
-      <div style={{display: 'inline-block'}}>
+    return !this.props.game ? this.renderEmptyBoard() : (
+      <div style={{ display: 'inline-block' }}>
         <Chessdiagram
-          fen={this.props.game ? this.props.game.initial_fen : ""}
+          fen={this.props.game ? this.props.game.initial_fen : ''}
           ranks={this.props.game.ranks}
           files={this.props.game.files}
         />

@@ -11,7 +11,7 @@ const selectPlayPageDomain = () => (state) => state.get('playPage');
 const selectGames = () => (state) => state.get('playPage').get('games');
 const makeSelectOpenGames = () => createSelector(
   selectGames(),
-  (substate) => substate.toJS().filter(game => game.status_id == 1)
+  (substate) => substate.toJS().filter((game) => Number(game.status_id) === 1)
 );
 
 /**
@@ -23,8 +23,9 @@ const makeSelectPlayPage = () => createSelector(
   (substate) => substate.toJS()
 );
 
-export default makeSelectPlayPage;
+// export default makeSelectPlayPage;
 export {
-  selectPlayPageDomain,
   makeSelectOpenGames,
+  makeSelectPlayPage,
+  selectPlayPageDomain,
 };

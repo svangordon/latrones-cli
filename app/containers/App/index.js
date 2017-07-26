@@ -14,7 +14,7 @@ import { createStructuredSelector } from 'reselect';
 
 import Navbar from 'containers/Navbar';
 import ScreenDimensionSpy from 'containers/ScreenDimensionSpy';
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 
@@ -32,7 +32,7 @@ export function App(props) {
   return (
     <AppWrapper>
       <ScreenDimensionSpy />
-      <Navbar location={props.location.pathname}/>
+      <Navbar location={props.location.pathname} />
       <Helmet
         titleTemplate="%s - React.js Boilerplate"
         defaultTitle="React.js Boilerplate"
@@ -48,7 +48,10 @@ export function App(props) {
 
 App.propTypes = {
   children: React.PropTypes.node,
-  dimensions: React.PropTypes.object,
+  location: {
+    pathname: React.PropTypes.string,
+  },
+  // dimensions: React.PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

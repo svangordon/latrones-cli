@@ -6,30 +6,31 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 
 import A from 'components/A';
-import makeSelectLoginPage from './selectors';
 import {
   makeSelectUser,
   makeSelectLoading,
-  makeSelectError
+  makeSelectError,
 } from 'containers/App/selectors';
 // import { selectLoginForm } from './selectors';
-import messages from './messages';
 import LoginForm from 'components/LoginForm';
-import { login, refreshToken } from './actions';
 import {
   getFormValues,
   isDirty,
   isPristine,
   isValid,
-  isInvalid
+  isInvalid,
 } from 'redux-form/immutable';
 import {
-  UserIsNotAuthenticated
+  UserIsNotAuthenticated,
 } from 'utils/wrappers';
+
+import makeSelectLoginPage from './selectors';
+// import messages from './messages';
+import { login, refreshToken } from './actions';
 
 export class LoginPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -41,19 +42,25 @@ export class LoginPage extends React.Component { // eslint-disable-line react/pr
     return (
       <div>
         <LoginForm
-          handleSubmit={(e) => {e.preventDefault(); this.props.login(new FormData(e.target))}}
+          handleSubmit={
+            (e) => {
+              e.preventDefault();
+              this.props.login(new FormData(e.target));
+            }
+          }
         />
         {this.props.error ? <p>{this.props.error}</p> : null}
         <a>Login with Twitter</a>
         <br />
-        <A href="/register">{"Create new user"}</A>
+        <A href="/register">{'Create new user'}</A>
       </div>
     );
   }
 }
 
 LoginPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  error: PropTypes.string,
   login: PropTypes.func.isRequired,
   refreshToken: PropTypes.func.isRequired,
 };
@@ -66,26 +73,27 @@ const mapStateToProps = createStructuredSelector({
   // LoginForm: makeSelectLoginPage
 });
 
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
   return {
-    dispatch: dispatch,
-    login: (form) => {dispatch(login(form))},
-    refreshToken: () => {dispatch(refreshToken())},
+    dispatch,
+    login: (form) => { dispatch(login(form)); },
+    refreshToken: () => { dispatch(refreshToken()); },
   };
 }
 
-const connectFn = state => ({
-  values: getFormValues('login')(state),
-  dirty: isDirty('login')(state),
-  pristine: isPristine('login')(state),
-  valid: isValid('login')(state),
-  invalid: isInvalid('login')(state)
-})
+// const connectFn = (state) => ({
+//   values: getFormValues('login')(state),
+//   dirty: isDirty('login')(state),
+//   pristine: isPristine('login')(state),
+//   valid: isValid('login')(state),
+//   invalid: isInvalid('login')(state),
+// });
 
-export default UserIsNotAuthenticated(connect(state => ({
+// !!!: Doesn't this (and connectFn) need to return something?
+export default UserIsNotAuthenticated(connect((state) => ({
   values: getFormValues('login')(state),
   dirty: isDirty('login')(state),
   pristine: isPristine('login')(state),
   valid: isValid('login')(state),
-  invalid: isInvalid('login')(state)
+  invalid: isInvalid('login')(state),
 }))(connect(mapStateToProps, mapDispatchToProps)(LoginPage)));

@@ -1,11 +1,7 @@
-import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+import { take, call, cancel, put, takeLatest } from 'redux-saga/effects';
 import * as Api from 'utils/Api';
 
 import { LOCATION_CHANGE } from 'react-router-redux';
-import {
-  registerUserSuccess,
-  registerUserError,
-} from './actions';
 import {
   REGISTER_USER_REQUESTED,
   REGISTER_USER_SUCCESS,
@@ -21,14 +17,14 @@ export function* defaultSaga() {
 export function* registerUser(action) {
   console.log('register saga fired', action);
   try {
-    console.log('point1', action)
+    console.log('point1', action);
     const user = yield call(Api.register, action.form);
     console.log('user', user);
-    yield put({type: REGISTER_USER_SUCCESS, user: user});
+    yield put({ type: REGISTER_USER_SUCCESS, user });
   } catch (e) {
     console.log('error ==', e);
-    const message = "Could not register user."
-    yield put({type: REGISTER_USER_ERROR, error: message})
+    const message = 'Could not register user.';
+    yield put({ type: REGISTER_USER_ERROR, error: message });
   }
 }
 

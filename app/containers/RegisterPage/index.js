@@ -6,22 +6,28 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import makeSelectRegisterPage from './selectors';
-import messages from './messages';
-import RegisterForm from 'components/RegisterForm';
-import { register } from './actions';
 import {
-  UserIsNotAuthenticated
+  UserIsNotAuthenticated,
 } from 'utils/wrappers';
+import RegisterForm from 'components/RegisterForm';
+
+import makeSelectRegisterPage from './selectors';
+// import messages from './messages';
+import { register } from './actions';
 
 export class RegisterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
         <RegisterForm
-          handleSubmit={(e) => {e.preventDefault(); this.props.register(new FormData(e.target))}}
+          handleSubmit={
+            (e) => {
+              e.preventDefault();
+              this.props.register(new FormData(e.target));
+            }
+          }
         />
         {this.props.error ? <p>{this.props.error}</p> : null}
       </div>
@@ -30,7 +36,9 @@ export class RegisterPage extends React.Component { // eslint-disable-line react
 }
 
 RegisterPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  register: PropTypes.func,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -40,7 +48,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    register: (form) => {dispatch(register(form))}
+    register: (form) => { dispatch(register(form)); },
   };
 }
 

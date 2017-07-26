@@ -9,12 +9,8 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
-
-export const USER_LOGIN_REQUESTED = 'boilerplate/App/USER_LOGIN_REQUESTED';
-export const USER_LOGIN_SUCCESS = 'boilerplate/App/USER_LOGIN_SUCCESS';
-export const USER_LOGIN_ERROR = 'boilerplate/App/USER_LOGIN_ERROR';
-
-export const DEFAULT_LOCALE = 'en';
+// export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
+// export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
+// export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+//
+// export const DEFAULT_LOCALE = 'en';

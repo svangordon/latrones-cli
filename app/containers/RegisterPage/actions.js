@@ -20,19 +20,19 @@ export function defaultAction() {
 export function register(form) {
   return {
     type: REGISTER_USER_REQUESTED,
-    form
-  }
+    form,
+  };
 }
 
 export function registerUserSuccess(user) {
   return {
     type: REGISTER_USER_SUCCESS,
-    user
-  }
+    user,
+  };
 }
 export function registerUserError(error) {
   return {
-    type:  REGISTER_USER_ERROR,
+    type: REGISTER_USER_ERROR,
     error,
-  }
+  };
 }
